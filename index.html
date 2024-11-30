@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600&display=swap" rel="stylesheet">
+    <title>Em Busca do Amuleto do Amanhecer</title>
+</head>
+<body>
+    <main>
+        <!-- Passo inicial -->
+        <div class="passo ativo" id="passo-0">
+            <img src="img/inicio-amuleto.png" alt="Mapa misterioso indicando o Amuleto do Amanhecer">
+            <p>Você encontra um mapa antigo que descreve o lendário **Amuleto do Amanhecer**, uma relíquia de poder ancestral. Para começar sua jornada, escolha entre o Espírito Santo ou o Ceará.</p>
+            <button class="btn-proximo" data-proximo="1">Espírito Santo</button>
+            <button class="btn-proximo" data-proximo="2">Ceará</button>
+        </div>
+
+        <!-- Passo 1: Espírito Santo -->
+        <div class="passo" id="passo-1">
+            <p>No Espírito Santo, você visita o Convento da Penha, onde encontra um manuscrito antigo indicando dois caminhos: explorar a Pedra Azul ou seguir para um misterioso vilarejo costeiro. O que você escolhe?</p>
+            <button class="btn-proximo" data-proximo="3">Explorar a Pedra Azul</button>
+            <button class="btn-proximo" data-proximo="4">Ir ao vilarejo costeiro</button>
+        </div>
+
+        <!-- Passo 2: Ceará -->
+        <div class="passo" id="passo-2">
+            <p>No Ceará, você chega à praia de Jericoacoara, onde um pescador lhe entrega um mapa que aponta duas opções: escalar a Pedra Furada ou navegar por um rio próximo. Qual será sua escolha?</p>
+            <button class="btn-proximo" data-proximo="5">Escalar a Pedra Furada</button>
+            <button class="btn-proximo" data-proximo="6">Navegar pelo rio</button>
+        </div>
+
+        <!-- Passo 3: Pedra Azul -->
+        <div class="passo" id="passo-3">
+            <p>Na Pedra Azul, você encontra uma inscrição indicando que o próximo destino é a Chapada dos Veadeiros.</p>
+            <button class="btn-proximo" data-proximo="7">Ir para a Chapada dos Veadeiros</button>
+        </div>
+
+        <!-- Passo 4: Vilarejo costeiro -->
+        <div class="passo" id="passo-4">
+            <p>No vilarejo costeiro, uma anciã lhe entrega uma pista dizendo que o Amuleto está no Monte Roraima.</p>
+            <button class="btn-proximo" data-proximo="8">Seguir para o Monte Roraima</button>
+        </div>
+
+        <!-- Passo 5: Pedra Furada -->
+        <div class="passo" id="passo-5">
+            <p>Escalando a Pedra Furada, você encontra um baú trancado. Dentro há uma pista indicando que o próximo destino é a Serra da Mantiqueira.</p>
+            <button class="btn-proximo" data-proximo="9">Ir para a Serra da Mantiqueira</button>
+        </div>
+
+        <!-- Passo 6: Rio no Ceará -->
+        <div class="passo" id="passo-6">
+            <p>Navegando pelo rio, você encontra um pergaminho com uma mensagem que aponta para o Pantanal como seu próximo destino.</p>
+            <button class="btn-proximo" data-proximo="10">Ir para o Pantanal</button>
+        </div>
+
+        <!-- Passo 7: Chapada dos Veadeiros -->
+        <div class="passo" id="passo-7">
+            <p>Na Chapada dos Veadeiros, você encontra um portal que confirma que o Amuleto está no Monte Roraima.</p>
+            <button class="btn-proximo" data-proximo="8">Seguir para o Monte Roraima</button>
+        </div>
+
+        <!-- Passo 8: Monte Roraima -->
+        <div class="passo" id="passo-8">
+            <p>Após escalar o Monte Roraima, você encontra o **Amuleto do Amanhecer** em uma caverna sagrada.</p>
+            <button class="btn-proximo" data-proximo="11">Admirar o Amuleto</button>
+        </div>
+
+        <!-- Passo 9: Serra da Mantiqueira -->
+        <div class="passo" id="passo-9">
+            <p>Na Serra da Mantiqueira, um guia local indica que o Amuleto está no Monte Roraima.</p>
+            <button class="btn-proximo" data-proximo="8">Seguir para o Monte Roraima</button>
+        </div>
+
+        <!-- Passo 10: Pantanal -->
+        <div class="passo" id="passo-10">
+            <p>No Pantanal, você descobre que o Amuleto está guardado no Monte Roraima, o destino final da jornada.</p>
+            <button class="btn-proximo" data-proximo="8">Ir para o Monte Roraima</button>
+        </div>
+
+        <!-- Passo 11: Final -->
+        <div class="passo" id="passo-11">
+            <img src="img/amuleto.png" alt="Amuleto do Amanhecer brilhando intensamente">
+            <p>Após uma jornada épica, você encontra o **Amuleto do Amanhecer** no Monte Roraima. Ele emana uma luz poderosa, e sua missão chega ao fim com sucesso!</p>
+            <button onclick="reiniciar()">Reiniciar Aventura</button>
+        </div>
+    </main>
+    <script>
+        document.querySelectorAll('.btn-proximo').forEach(button => {
+            button.addEventListener('click', function () {
+                const passoAtual = this.closest('.passo');
+                const proximoPasso = document.getElementById(`passo-${this.dataset.proximo}`);
+                
+                passoAtual.classList.remove('ativo');
+                proximoPasso.classList.add('ativo');
+            });
+        });
+
+        function reiniciar() {
+            document.querySelectorAll('.passo').forEach(passo => passo.classList.remove('ativo'));
+            document.getElementById('passo-0').classList.add('ativo');
+        }
+    </script>
+</body>
+</html>
